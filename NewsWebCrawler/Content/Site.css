@@ -25,6 +25,7 @@ textarea {
 
 .jumbotron{
     text-align: center;
+    background-image:url("../Images/backsplash.jpg")
 }
 
 .row_articles{

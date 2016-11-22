@@ -21,11 +21,12 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Pick Your Team", "PickTeam", "NewsArticle")</li>
 
                     @*TODO: Remove the following line of code once the site gets built out.  This is just a hack
                         so I don't have to log on just to go to the site with the news*@
                     <li>@Html.ActionLink("News", "Index", "NewsArticle")</li> 
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
