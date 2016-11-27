@@ -202,10 +202,14 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\NewsArticleController.cs" />
     <Compile Include="Controllers\NewsArticlesController.cs" />
+    <Compile Include="Controllers\RacesController.cs" />
     <Compile Include="Controllers\ResultsController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Data\DataModel.cs" />
     <Compile Include="Data\NewsArticle.cs" />
+    <Compile Include="Data\Race.cs" />
     <Compile Include="Data\Result.cs" />
+    <Compile Include="Data\User.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -219,6 +223,7 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\customStyle.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -291,6 +296,16 @@
     <Content Include="Views\NewsArticles\Details.cshtml" />
     <Content Include="Views\NewsArticles\Edit.cshtml" />
     <Content Include="Views\NewsArticles\Index.cshtml" />
+    <Content Include="Views\Users\Create.cshtml" />
+    <Content Include="Views\Users\Delete.cshtml" />
+    <Content Include="Views\Users\Details.cshtml" />
+    <Content Include="Views\Users\Edit.cshtml" />
+    <Content Include="Views\Users\Index.cshtml" />
+    <Content Include="Views\Races\Create.cshtml" />
+    <Content Include="Views\Races\Delete.cshtml" />
+    <Content Include="Views\Races\Details.cshtml" />
+    <Content Include="Views\Races\Edit.cshtml" />
+    <Content Include="Views\Races\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -3,45 +3,50 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/Content/customStyle.css" rel="stylesheet" type="text/css" />
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Pick Your Team", "PickTeam", "NewsArticle")</li>
+    <div id="wrapper">
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("Pick Your Team", "PickTeam", "NewsArticle")</li>
 
-                    @*TODO: Remove the following line of code once the site gets built out.  This is just a hack
-                        so I don't have to log on just to go to the site with the news*@
-                    <li>@Html.ActionLink("News", "Index", "NewsArticle")</li> 
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
+                        @*TODO: Remove the following line of code once the site gets built out.  This is just a hack
+                            so I don't have to log on just to go to the site with the news*@
+                        <li>@Html.ActionLink("News", "Index", "NewsArticle")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    </ul>
+                    @Html.Partial("_LoginPartial")
+                </div>
             </div>
         </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Customized Rowing News</p>
-        </footer>
-    </div>
+        <div class="container body-content">
+            <main>
+                @RenderBody()
+            </main>
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - Customized Rowing News</p>
+            </footer>
+        </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+        </div>
 </body>
 </html>

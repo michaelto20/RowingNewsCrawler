@@ -17,7 +17,8 @@ namespace NewsWebCrawler.Controllers
         // GET: Results
         public ActionResult Index()
         {
-            return View(db.Results.ToList());
+            var results = db.Results.Include(r => r.Race);
+            return View(results.ToList());
         }
 
         // GET: Results/Details/5
@@ -38,6 +39,7 @@ namespace NewsWebCrawler.Controllers
         // GET: Results/Create
         public ActionResult Create()
         {
+            ViewBag.RaceId = new SelectList(db.Race, "Id", "Team");
             return View();
         }
 
@@ -46,7 +48,7 @@ namespace NewsWebCrawler.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Team")] Result result)
+        public ActionResult Create([Bind(Include = "Id,Time,BoatClass,RaceId")] Result result)
         {
             if (ModelState.IsValid)
             {
@@ -55,6 +57,7 @@ namespace NewsWebCrawler.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.RaceId = new SelectList(db.Race, "Id", "Team", result.RaceId);
             return View(result);
         }
 
@@ -70,6 +73,7 @@ namespace NewsWebCrawler.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.RaceId = new SelectList(db.Race, "Id", "Team", result.RaceId);
             return View(result);
         }
 
@@ -78,7 +82,7 @@ namespace NewsWebCrawler.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Team")] Result result)
+        public ActionResult Edit([Bind(Include = "Id,Time,BoatClass,RaceId")] Result result)
         {
             if (ModelState.IsValid)
             {
@@ -86,6 +90,7 @@ namespace NewsWebCrawler.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.RaceId = new SelectList(db.Race, "Id", "Team", result.RaceId);
             return View(result);
         }
 

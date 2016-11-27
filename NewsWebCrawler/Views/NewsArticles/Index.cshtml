@@ -21,6 +21,9 @@
         <th>
             @Html.DisplayNameFor(model => model.Team)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Abstract)
+        </th>
         <th></th>
     </tr>
 
@@ -34,6 +37,9 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Team)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Abstract)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |

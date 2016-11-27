@@ -4,8 +4,15 @@
 
 <div class="jumbotron">
     <h1>@ViewBag.Title<br /></h1>
-    <h4>After this step you'll never miss anything about your team!</h4>
+    <h4>After This Step You'll Never Miss Anything About Your Team!</h4>
 </div>
+
+@if (ViewBag.IsTeamPicked)
+{
+    <div class="notAuthenticated">
+        <p>Since you have already picked a favorite team, picking a different team will replace your previous selection.</p>
+    </div>
+}
 
 
 
@@ -14,10 +21,12 @@
     <label for="team_pick">Pick Your Team:</label>
     <select name="team_pick" id="team_pick">
         <option value="">Please Select The Team To Follow</option>
-        <option value="UW">University of Washington</option>
+        <option value="Washington">University of Washington</option>
         <option value="Harvard">Harvard</option>
+        <!--
         <option value="UGA">University of Georgia</option>
-        <option value="Cal">University of California</option>
+        <option value="California">University of California</option>
+            -->
     </select>
 
     <input type="submit" required />

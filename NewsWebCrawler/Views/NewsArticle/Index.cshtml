@@ -1,4 +1,7 @@
-﻿@{
+﻿@using NewsWebCrawler.Models
+@model TeamViewModel
+
+@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -7,7 +10,7 @@
 
 <div class="jumbotron">
     <h1>Your Favorite Teams<br /></h1>
-    <h3>After this step you'll never miss anything about your team!</h3>
+    <h3 class="lead">Only News About Your Team!</h3>
 </div>
 
 
@@ -16,22 +19,49 @@
     News Articles:
 
     -->
+<div class="row">
 <div class="row_articles">
     <div class="col-md-6">
         <h2>News Articles</h2>
-        <a href="http://www.gohuskies.com/news/2016/10/23/mens-rowing-huskies-take-first-place-at-head-of-the-charles.aspx" target="_blank">UW Wins HOCR</a><br />
-        <a href="https://www.bostonglobe.com/sports/other/2016/10/23/washington-again-rules-river/EUfsfoWuzghzMBuFMgsRiI/story.html" target="_blank">Washington Rules the River</a>
+        
+        @foreach(var article in @Model.NewsArticles)
+        {
+            <div class="articleResult">
+
+            
+                <a href=@article.URL target="_blank">@article.Title</a><br />
+                <div class="articleAbstract">
+                    <p>@article.Abstract</p>
+                </div>
+            </div>
+        }
+       <!-- <a href="http://www.gohuskies.com/news/2016/10/23/mens-rowing-huskies-take-first-place-at-head-of-the-charles.aspx" target="_blank">UW Wins HOCR</a><br />
+        <a href="https://www.bostonglobe.com/sports/other/2016/10/23/washington-again-rules-river/EUfsfoWuzghzMBuFMgsRiI/story.html" target="_blank">Washington Rules the River</a>-->
     </div>
 </div>
 <div class="row_articles">
     <div class="col-md-6">
         <h2>Results</h2>
-        <h4>Head of the Charles Regatta</h4>
-        <p>Washington 16:32</p>
-        <p>Harvard 16:45</p>
-        <p>Yale 16:52</p>
-        <p>Princeton 16:55</p>
-            
         
+        @foreach (var race in Model.Races)
+        {
+            <div class="articleResult">
+                <h4>@race.Regatta</h4>
+                <div class="articleAbstract">
+                    @foreach (var result in race.Results)
+                    {
+
+                        if (result.Race == race)
+                        {
+                            <p>@result.BoatClass - @result.Time</p>
+                        }
+
+                    }
+                </div>
+            </div>
+            <br />
+        }
+
     </div>
+</div>
 </div>

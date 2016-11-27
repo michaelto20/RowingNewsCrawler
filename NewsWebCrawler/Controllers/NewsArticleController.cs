@@ -1,27 +1,78 @@
-﻿using System;
+﻿using NewsWebCrawler.Data;
+using NewsWebCrawler.Models;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
 namespace NewsWebCrawler.Controllers
 {
+    [Authorize]
     public class NewsArticleController : Controller
     {
         // GET: NewsArticle
+        
         public ActionResult Index()
         {
-            return View();
+            var teamVM = new TeamViewModel();
+            using (DataModel dm = new DataModel())
+            {
+                User user = (User)dm.Users.FirstOrDefault(u => u.Id.Equals(System.Web.HttpContext.Current.User.Identity.Name));
+                foreach (var t in dm.NewsArticles)
+                {
+                    if (t.Team == user.FavTeam)
+                    {
+                        teamVM.NewsArticles.Add(t);
+                    }
+                }
+                foreach (var res in dm.Race.Include("Results"))
+                {
+                    if (res.Team == user.FavTeam)
+                    {
+                        teamVM.Races.Add(res);
+                    }
+                }
+                //
+            }
+            return View(teamVM);
         }
 
         public ActionResult PickTeam()
         {
-            return View();
+            ViewBag.IsTeamPicked = false;
+            using (DataModel dm = new DataModel())
+            {
+                string userName = System.Web.HttpContext.Current.User.Identity.Name;
+                User prevProfile = (User)dm.Users.FirstOrDefault(u => u.Id.Equals(userName));
+                if (prevProfile != null)
+                {
+                    ViewBag.IsTeamPicked = true;
+                }
+            }
+            
+            return View(ViewBag);
         }
 
         [HttpPost]
         public ActionResult PickTeam(string team_pick)
         {
+            User user = new User();
+            user.FavTeam = team_pick;
+            user.Id = System.Web.HttpContext.Current.User.Identity.Name;
+            using (DataModel dm = new DataModel())
+            {
+                User prevProfile = (User)dm.Users.FirstOrDefault(u => u.Id.Equals(user.Id));
+                if (prevProfile != null)
+                {
+                    dm.Users.Remove(prevProfile);
+                }
+
+                dm.Users.Add(user);
+                dm.SaveChanges();
+
+            }
             ViewBag.Picked = "Thank you for selecting " + team_pick;
             return RedirectToAction("Index");
         }

@@ -77,6 +77,6 @@ C:\Users\Michael Townsend\Desktop\Development\Internet Programming Class\NewsWeb
 C:\Users\Michael Townsend\Desktop\Development\Internet Programming Class\NewsWebCrawler\NewsWebCrawler\bin\Microsoft.Owin.Security.Google.xml
 C:\Users\Michael Townsend\Desktop\Development\Internet Programming Class\NewsWebCrawler\NewsWebCrawler\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\Michael Townsend\Desktop\Development\Internet Programming Class\NewsWebCrawler\NewsWebCrawler\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-C:\Users\Michael Townsend\Desktop\Development\Internet Programming Class\NewsWebCrawler\NewsWebCrawler\obj\Debug\NewsWebCrawler.csprojResolveAssemblyReference.cache
 C:\Users\Michael Townsend\Desktop\Development\Internet Programming Class\NewsWebCrawler\NewsWebCrawler\obj\Debug\NewsWebCrawler.dll
 C:\Users\Michael Townsend\Desktop\Development\Internet Programming Class\NewsWebCrawler\NewsWebCrawler\obj\Debug\NewsWebCrawler.pdb
+C:\Users\Michael Townsend\Desktop\Development\Internet Programming Class\NewsWebCrawler\NewsWebCrawler\obj\Debug\NewsWebCrawler.csprojResolveAssemblyReference.cache

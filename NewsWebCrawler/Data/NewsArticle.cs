@@ -23,6 +23,9 @@ namespace NewsWebCrawler.Data
         [Required]
         public string Team { get; set; }
 
+        [Required]
+        public string Abstract { get; set; }
+
         public NewsArticle()
         {
 

@@ -8,7 +8,7 @@ namespace NewsWebCrawler.Models
 {
     public class TeamViewModel
     {
-        public List<Result> TeamResults { get; set; } = new List<Result>();
-        public List<NewsArticle> TeamArticles { get; set; } = new List<NewsArticle>();
+        public List<Race> Races { get; set; } = new List<Race>();
+        public List<NewsArticle> NewsArticles { get; set; } = new List<NewsArticle>();
     }
 }

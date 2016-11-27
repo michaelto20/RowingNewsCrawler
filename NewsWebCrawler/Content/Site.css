@@ -25,9 +25,145 @@ textarea {
 
 .jumbotron{
     text-align: center;
-    background-image:url("../Images/backsplash.jpg")
+    background-image:url("../Images/backsplash.jpg");
+    color: white;
+    
 }
 
 .row_articles{
     text-align: center;
 }
+
+/* COLOR SCHEME: Knot Just Nautical*/
+
+header, section, footer, aside, nav, main, article, figure {
+ display: block;
+}
+
+#debugInfo{
+    font-size: 7pt;
+}
+
+/************************************************************/
+/*Body Styling*/
+/************************************************************/
+body{
+	font-family: Calibri, Helvetica, ARial, sans-serif;
+	background-color:#2C3E50;
+	color: #FFFFFF;
+}
+
+/************************************************************/
+/*Index Styling*/
+/************************************************************/
+#wrapper{
+	width: 1000px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 10px;
+}
+
+/************************************************************/
+/*Header*/
+/************************************************************/
+
+header{
+	color: #FFFFFF;
+	background-color: #FC4349;
+	background-position: right;
+	background-repeat: no-repeat;
+	border-radius: 10px 10px 0 0;
+}
+
+/************************************************************/
+/*Main Styling*/
+/************************************************************/
+main{
+	color:#2C3E50;
+	background-color:#FFFFFF;
+	padding: 10px;
+	z-index: 0;
+}
+
+main a{
+	color:#2C3E50;
+}
+/************************************************************/
+/*Footer*/
+/************************************************************/
+footer{
+	
+	border-radius: 0 0 10px 10px;
+	padding: 5px 10px;
+	font-size: 10pt;
+	font-style: italic;
+}
+
+footer a{
+	color: #FFFFFF;
+}
+
+/************************************************************/
+/*General Styling*/
+/************************************************************/
+
+h1{
+	margin: 0;
+	padding: 5px 10px;
+	font-size: 42pt;
+	line-height: 36px;
+	font-weight: lighter;
+}
+
+h2{
+	margin: 0;
+	padding: 0 10px 5px;
+	font-size: 18pt;
+	line-height: 22pt;
+	font-weight: lighter;
+	font-style: italic;
+}
+
+h3{
+	font-size: 24pt;
+	font-weight: lighter;
+	margin: 0;
+}
+
+
+/************************************************************/
+/*Navigation styling*/
+/************************************************************/
+
+nav{
+	color:#2C3E50;
+	background-color:#D7DADB;
+	padding: 5px 10px;
+	font-size: 14pt;
+	font-weight: bold;
+	text-decoration: none;
+	box-shadow: 0 10px 5px -5px #6DBCDB;
+	position: relative;
+}
+
+nav a{
+	text-decoration: none;
+	color:#2C3E50;
+}
+
+nav ul{
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+nav ul li{
+	display: inline;
+	margin-right: 10px;
+}
+
+nav a:hover{
+	border-top: 1px dashed #2C3E50;
+	border-bottom: 1px dashed #2C3E50;
+}
+

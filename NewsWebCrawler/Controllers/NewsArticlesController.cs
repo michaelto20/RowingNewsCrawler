@@ -46,7 +46,7 @@ namespace NewsWebCrawler.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,URL,Title,Team")] NewsArticle newsArticle)
+        public ActionResult Create([Bind(Include = "Id,URL,Title,Team,Abstract")] NewsArticle newsArticle)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +78,7 @@ namespace NewsWebCrawler.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,URL,Title,Team")] NewsArticle newsArticle)
+        public ActionResult Edit([Bind(Include = "Id,URL,Title,Team,Abstract")] NewsArticle newsArticle)
         {
             if (ModelState.IsValid)
             {

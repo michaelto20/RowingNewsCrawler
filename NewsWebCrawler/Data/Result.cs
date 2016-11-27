@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -12,26 +13,16 @@ namespace NewsWebCrawler.Data
         public int Id { get; set; }
 
         [Required]
-        public string Team { get; set; }
+        public TimeSpan Time { get; set; }
 
         [Required]
-        public List<RaceResult> RaceResults { get; set; }
+        public string BoatClass { get; set; }
 
-        public class RaceResult
-        {
-            [Key]
-            public int Id { get; set; }
+        // Navigation Properties
+        public int RaceId { get; set; }
 
-            [Required]
-            public string Team { get; set; }
+        [ForeignKey("RaceId")]
+        public virtual Race Race { get; set; }
 
-            [Required]
-            public TimeSpan Time { get; set; }
-
-            [Required]
-            public string BoatClass { get; set; }
-        }
-            
     }
-
 }
