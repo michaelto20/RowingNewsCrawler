@@ -202,12 +202,8 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\NewsArticleController.cs" />
-    <Compile Include="Controllers\NewsArticlesController.cs" />
-    <Compile Include="Controllers\RacesController.cs" />
-    <Compile Include="Controllers\ResultsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Data\DataModel.cs" />
-    <Compile Include="Data\NewsArticle.cs" />
     <Compile Include="Data\Race.cs" />
     <Compile Include="Data\Result.cs" />
     <Compile Include="Data\User.cs" />
@@ -217,6 +213,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\NewsArticle.cs" />
     <Compile Include="Models\TeamViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />

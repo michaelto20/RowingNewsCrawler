@@ -16,13 +16,13 @@ namespace NewsWebCrawler.Data
             : base("name=DefaultConnection")
         {
             Database.SetInitializer<DataModel>(
-                new DropCreateDatabaseIfModelChanges<DataModel>()
-                //new DropCreateDatabaseAlways<DataModel>()
+                //new DropCreateDatabaseIfModelChanges<DataModel>()
+                new DropCreateDatabaseAlways<DataModel>()
            );
         }
 
         public virtual DbSet<Race> Race{ get; set; }
-        public virtual DbSet<NewsArticle> NewsArticles{ get; set; }
+       
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Result> Results { get; set; }
 

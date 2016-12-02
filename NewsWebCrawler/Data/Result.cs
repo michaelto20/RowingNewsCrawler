@@ -19,9 +19,14 @@ namespace NewsWebCrawler.Data
         public string BoatClass { get; set; }
 
         // Navigation Properties
+        [Display(Name ="Race")]
+        [ForeignKey("Race"), Column(Order = 0)]
         public int RaceId { get; set; }
 
-        [ForeignKey("RaceId")]
+        [Display(Name = "Regatta")]
+        [ForeignKey("Race"), Column(Order = 1)]
+        public string Regatta { get; set; }
+
         public virtual Race Race { get; set; }
 
     }

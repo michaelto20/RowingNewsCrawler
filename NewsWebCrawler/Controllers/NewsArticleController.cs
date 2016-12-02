@@ -21,7 +21,7 @@ namespace NewsWebCrawler.Controllers
         {
             string url = @"http://www.gocrimson.com/sports/mcrew-hw/headlines-featured?feed=rss_2.0";
             //string url = @"http://www.gohuskies.com/rss.aspx?path=mrow";
-            CrawlRss(url);
+            
             var teamVM = new TeamViewModel();
             using (DataModel dm = new DataModel())
             {
@@ -33,6 +33,7 @@ namespace NewsWebCrawler.Controllers
                 //        teamVM.NewsArticles.Add(t);
                 //    }
                 //}
+                teamVM.NewsArticles.AddRange(CrawlRss(url, user.FavTeam));
                 foreach (var res in dm.Race.Include("Results"))
                 {
                     if (res.Team == user.FavTeam)
@@ -83,8 +84,9 @@ namespace NewsWebCrawler.Controllers
             return RedirectToAction("Index");
         }
 
-        private void CrawlRss(string url)
+        private List<NewsArticle> CrawlRss(string url, string team)
         {
+            List<NewsArticle> newsArticles = new List<NewsArticle>();
             string subject = "";
             string summary = "";
             string articleURL = "";
@@ -98,8 +100,11 @@ namespace NewsWebCrawler.Controllers
                 subject = item.Title.Text;
                 summary = item.Summary.Text;
                 articleURL = item.Id;
+                NewsArticle article = new NewsArticle(articleURL, subject, team, summary);
+                newsArticles.Add(article);
             }
-
+            
+            return newsArticles;
         }
 
         // GET: NewsArticle/Details/5

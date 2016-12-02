@@ -1,29 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace NewsWebCrawler.Data
+namespace NewsWebCrawler.Models
 {
     public class NewsArticle
     {
-        [MaxLength(255)]
-        [Required]
         public string URL { get; set; }
 
-        [MaxLength(100)]
-        [Required]
         public string Title { get; set; }
 
-        [Key]
-        public int Id { get; set; }
-
-        [MaxLength(100)]
-        [Required]
         public string Team { get; set; }
 
-        [Required]
         public string Abstract { get; set; }
 
         public NewsArticle()
@@ -31,5 +20,12 @@ namespace NewsWebCrawler.Data
 
         }
 
+        public NewsArticle(string url, string title, string team, string summary)
+        {
+            this.URL = url;
+            this.Title = title;
+            this.Team = team;
+            this.Abstract = summary;
+        }
     }
 }
