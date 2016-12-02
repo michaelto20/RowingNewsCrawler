@@ -6,6 +6,9 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.ServiceModel.Syndication;
+using System.Xml;
+using System.Xml.Linq;
 
 namespace NewsWebCrawler.Controllers
 {
@@ -16,17 +19,20 @@ namespace NewsWebCrawler.Controllers
         
         public ActionResult Index()
         {
+            string url = @"http://www.gocrimson.com/sports/mcrew-hw/headlines-featured?feed=rss_2.0";
+            //string url = @"http://www.gohuskies.com/rss.aspx?path=mrow";
+            CrawlRss(url);
             var teamVM = new TeamViewModel();
             using (DataModel dm = new DataModel())
             {
                 User user = (User)dm.Users.FirstOrDefault(u => u.Id.Equals(System.Web.HttpContext.Current.User.Identity.Name));
-                foreach (var t in dm.NewsArticles)
-                {
-                    if (t.Team == user.FavTeam)
-                    {
-                        teamVM.NewsArticles.Add(t);
-                    }
-                }
+                //foreach (var t in dm.NewsArticles)
+                //{
+                //    if (t.Team == user.FavTeam)
+                //    {
+                //        teamVM.NewsArticles.Add(t);
+                //    }
+                //}
                 foreach (var res in dm.Race.Include("Results"))
                 {
                     if (res.Team == user.FavTeam)
@@ -75,6 +81,25 @@ namespace NewsWebCrawler.Controllers
             }
             ViewBag.Picked = "Thank you for selecting " + team_pick;
             return RedirectToAction("Index");
+        }
+
+        private void CrawlRss(string url)
+        {
+            string subject = "";
+            string summary = "";
+            string articleURL = "";
+            XmlReader reader = XmlReader.Create(url);
+            //XElement xml = XElement.Load("appconfig.xml");
+            var temp = reader.Value;
+            SyndicationFeed feed = SyndicationFeed.Load(reader);
+            reader.Close();
+            foreach (SyndicationItem item in feed.Items)
+            {
+                subject = item.Title.Text;
+                summary = item.Summary.Text;
+                articleURL = item.Id;
+            }
+
         }
 
         // GET: NewsArticle/Details/5
