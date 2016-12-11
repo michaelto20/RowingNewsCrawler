@@ -17,7 +17,7 @@ namespace NewsWebCrawler.Data
         public string Team { get; set; }
 
         [Required]
-        [Key, Column(Order = 1)]
+       // [Key, Column(Order = 1)]
         public string Regatta { get; set; }
         
         // Navigation Properties

@@ -7,25 +7,23 @@ namespace NewsWebCrawler.Models
 {
     public class NewsArticle
     {
-        public string URL { get; set; }
+        public int Id { get; set; }
+
+        public string articleURL { get; set; }
 
         public string Title { get; set; }
 
-        public string Team { get; set; }
+        public string team { get; set; }
 
-        public string Abstract { get; set; }
+        public string summary { get; set; }
 
-        public NewsArticle()
+        
+        public NewsArticle(string articleURL, string subject, string team, string summary)
         {
-
-        }
-
-        public NewsArticle(string url, string title, string team, string summary)
-        {
-            this.URL = url;
-            this.Title = title;
-            this.Team = team;
-            this.Abstract = summary;
+            this.articleURL = articleURL;
+            this.Title = subject;
+            this.team = team;
+            this.summary = summary;
         }
     }
 }

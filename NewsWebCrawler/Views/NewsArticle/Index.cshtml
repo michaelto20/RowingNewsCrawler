@@ -19,49 +19,90 @@
     News Articles:
 
     -->
+<form id="team_picker" class="col-md-4 col-md-offset-4">
+    <label for="team_pick">Pick Your Team:</label>
+    <select name="picked_team" id="picked_team">
+        <option value="">Please Select The Team To Follow</option>
+        <!--option value="Washington">University of Washington</!--option>-->
+        <option value="Harvard">Harvard</option>
+        <!--
+        <option value="UGA">University of Georgia</option>
+        <option value="California">University of California</option>
+            -->
+    </select>
+
+    <input type="submit" id="submit" required class="col-md-4 col-md-offset-4"/>
+</form>
+
 <div class="row">
 <div class="row_articles">
     <div class="col-md-6">
-        <h2>News Articles</h2>
-        
-        @foreach(var article in @Model.NewsArticles)
+        <h2 id="ResultsHeader">News Articles</h2>
+        @if (@Model != null)
         {
-            <div class="articleResult">
+            foreach (var article in @Model.NewsArticles)
+            {
+                <div class="articleResult">
 
             
-                <a href=@article.URL target="_blank">@article.Title</a><br />
-                <div class="articleAbstract">
-                    <p>@article.Abstract</p>
+                    <a href=@article.articleURL target="_blank">@article.Title</a><br />
+                    <div class="articleAbstract">
+                        <p>@article.summary</p>
+                    </div>
                 </div>
-            </div>
+            }
         }
-       <!-- <a href="http://www.gohuskies.com/news/2016/10/23/mens-rowing-huskies-take-first-place-at-head-of-the-charles.aspx" target="_blank">UW Wins HOCR</a><br />
-        <a href="https://www.bostonglobe.com/sports/other/2016/10/23/washington-again-rules-river/EUfsfoWuzghzMBuFMgsRiI/story.html" target="_blank">Washington Rules the River</a>-->
+
     </div>
 </div>
 <div class="row_articles">
     <div class="col-md-6">
         <h2>Results</h2>
-        
-        @foreach (var race in Model.Races)
+        @if (Model != null)
         {
-            <div class="articleResult">
-                <h4>@race.Regatta</h4>
-                <div class="articleAbstract">
-                    @foreach (var result in race.Results)
-                    {
-
-                        if (result.Race == race)
+            foreach (var race in Model.Races)
+            {
+                <div class="articleResult">
+                    <h4>@race.Regatta</h4>
+                    <div class="articleAbstract">
+                        @foreach (var result in race.Results)
                         {
-                            <p>@result.BoatClass - @result.Time</p>
+
+                            if (result.Race == race)
+                            {
+                                <p>@result.BoatClass - @result.Time</p>
+                            }
+
                         }
-
-                    }
+                    </div>
                 </div>
-            </div>
-            <br />
+                <br />
+            }
         }
-
     </div>
 </div>
 </div>
+
+<script>
+    $('#submit').click(function () {
+        $.post('/NewsArticle/Index', $('#team_picker').serialize(), function (teamVM) {
+            console.log(teamVM);
+            var newsArticles = teamVM.NewsArticles;
+            var parentDiv = $('<div>').addClass('parentDiv');
+            // change to foreach loop
+            for (var num = 0; num < newsArticles.length; num++){
+                var div = $('<div>').addClass('articleResult');
+                div.append($('<a href="' + newsArticles[num].articleURL + '"' + 'target="_blank">' + newsArticles[num].Title + '</a><br />'));
+                div.append($('<div>').addClass('articleAbstract'));
+                div.append($('<p>').text(newsArticles[num].summary));
+                parentDiv.append(div);
+            }
+            console.log(parentDiv);
+            $('#ResultsHeader').append(parentDiv);
+        },
+           'json' // I expect a JSON response
+        );
+        event.preventDefault();
+
+    });
+</script>
